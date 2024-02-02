@@ -1,0 +1,21 @@
+name: databricks-cicd
+
+on:
+ push:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      
+
+      # - name: Databricks CLI version
+      #   run: databricks --version
+     
+      - name: airflow install
+        
+        with:
+          local-notebook-path: .github/workflows/airflowinstall.sh
+          
