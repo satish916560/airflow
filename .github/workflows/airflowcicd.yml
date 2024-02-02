@@ -16,6 +16,6 @@ jobs:
      
       - name: airflow install
         
-        with:
+        run:
           local-notebook-path: .github/workflows/airflowinstall.sh
           
