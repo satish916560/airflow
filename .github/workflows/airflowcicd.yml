@@ -11,11 +11,15 @@ jobs:
         uses: actions/checkout@v3
       
 
-      # - name: Databricks CLI version
-      #   run: databricks --version
-     
-      - name: airflow install
-        
-        run:
-          local-notebook-path: .github/workflows/airflowinstall.sh
-          
+      - name: airflow cicd
+        run: | 
+             mkdir airflow
+             cd airflow
+             pipenv --python 3.8
+             pipenv shell
+             export AIRFLOW_HOME=$(pwd)
+             pipenv install apache-airflow
+             pipenv install apache-airflow-providers-databricks
+             mkdir dags
+             airflow db init
+             airflow users create --username admin --firstname <firstname> --lastname <lastname> --role Admin --email <email>
